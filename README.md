@@ -14,13 +14,13 @@ Cada etapa deverá ser documentada corretamente nas mensagens de commit, usando 
 Configurar o ambiente de trabalho no GitHub e realizar a primeira exibição de um CPF no programa.
 
 ### Tarefas
-- [ x] Criar uma conta no GitHub (caso ainda não possua).
-- [ x] Criar um novo repositório no GitHub.
-- [x ] Adicionar:
+- [X] Criar uma conta no GitHub (caso ainda não possua).
+- [X] Criar um novo repositório no GitHub.
+- [X] Adicionar:
     - Um arquivo `README.md`, descrevendo o projeto e listando estas etapas.
     - Um arquivo de **licença** (por exemplo, MIT License).
     - Um arquivo de código `.por`.
-- [x ] Exibir um CPF usando o comando [`escreva`](https://github.com/gutohertzog/tds-senac-tech/blob/main/uc2-desenvolver-algoritmos/1.portugol/entrada-saida.md#fun%C3%A7%C3%A3o-escreva).
+- [X] Exibir um CPF usando o comando [`escreva`](https://github.com/gutohertzog/tds-senac-tech/blob/main/uc2-desenvolver-algoritmos/1.portugol/entrada-saida.md#fun%C3%A7%C3%A3o-escreva).
 
 # Como usar checkbox no README
 
