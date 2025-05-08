@@ -1,3 +1,5 @@
+NOMES: PIETRO BASTOS, LUCAS MIRANDA FERNANDEZ, EDISON GOMES GUIMARÃES JUNIOR. 
+
 # Validador_de_CPF
 Configurar o ambiente de trabalho no GitHub e realizar a primeira exibição de um CPF no programa.
 
@@ -48,6 +50,18 @@ Valide para que os números digitados sejam maiores que zero.
 ### Tarefas
 - [x] Ler apenas valores maiores que zero.
 - [x] Exibir o CPF formatado a partir dos valores lidos.
+
+## Etapa 5: Entrando Texto
+
+### Objetivos
+Receba um CPF completo (com pontos e traço) e mostre ele separado em 2 partes.
+
+### Tarefas
+- [X] Coloque o nome dos integrantes estar na parte inicial do README.md.
+- [X] Todos os integrantes devem ter suas contas no GitHub.
+- [X] Leia um CPF completo do usuário (`XXX.XXX.XXX-YY`).
+- [X] Separe os 9 números do CPF dos 2 Dígitos Verificadores em duas variáveis.
+- [X] Exiba as duas variáveis separadamente.
 
 ---
 
