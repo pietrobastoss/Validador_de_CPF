@@ -1,46 +1,25 @@
 programa {
-  funcao inicio() {
-    inteiro p1  , p2, p3  , p4    
-    
-    para(p1 = 0; p1 <= 0;""){
-    escreva("informe os Primeiros 3 digitos do seu CPF: ")
-    leia(p1)
-    
-    se(p1 <= 0){
-      escreva("\nINVÁLIDO! > Digite um numero maior que zero.\n")
-    }
-    }
-    
-    para(p2 = 0; p2 <= 0;""){
-    escreva("informe os proximos 3 digitos do seu CPF: ")
-    leia(p2)
-    
-    se(p2 <= 0){
-      escreva("\nINVÁLIDO! > Digite um numero maior que zero.\n")
-    }
-    }
+    inclua biblioteca Texto
 
-    para(p3 = 0; p3 <= 0;""){
-    escreva("informe os proximos 3 digitos do seu CPF: ")
-    leia(p3)
-    
-    se(p3 <= 0){
-      escreva("\nINVÁLIDO! > Digite um numero maior que zero.\n")
-    }
-    }
+    funcao inicio() {
+        cadeia cpf_completo
+        cadeia numeros = ""
+        cadeia verificadores = "" 
+        inteiro pos_numeros[9] = {0, 1, 2, 4, 5, 6, 8, 9, 10}
+        inteiro pos_verificadores[2] = {12, 13}
 
-    para(p4 = 0; p4 <= 0;""){
-    escreva("informe os ultimos 2 digitos do seu CPF: ")
-    leia(p4)
-    
-    se(p4 <= 0){
-      escreva("\nINVÁLIDO! > Digite um numero maior que zero.\n")
+        escreva("Digite o CPF no formato XXX.XXX.XXX-YY: ")
+        leia(cpf_completo)
+       
+        para(inteiro i = 0; i < 9; i++) {
+            numeros = numeros + Texto.obter_caracter(cpf_completo, pos_numeros[i])
+        }
+
+        para(inteiro i = 0; i < 2; i++) {
+            verificadores = verificadores + Texto.obter_caracter(cpf_completo, pos_verificadores[i])
+        }
+
+        escreva("\nNúmeros do CPF: ", numeros)
+        escreva("\nDígitos Verificadores: ", verificadores)
     }
-    limpa()
-    }
-    
-      escreva("CPF:\t", p1, ".", p2, ".", p3, "-", p4)
-    
-    
-  }
 }
