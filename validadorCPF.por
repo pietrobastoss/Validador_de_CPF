@@ -27,16 +27,16 @@ programa {
 
     
     se (Texto.numero_caracteres(cpfSomenteNumeros) == 11) {
-     
+      
       para(i = 0; i < 9; i = i + 1) {
         numerosCPF = numerosCPF + Texto.obter_caracter(cpfSomenteNumeros, i)
       }
 
       
       digitosVerificadores = Texto.obter_caracter(cpfSomenteNumeros, 9) + Texto.obter_caracter(cpfSomenteNumeros, 10)
-
-      escreva("Números do CPF: ", numerosCPF, "\n")
-      escreva("Dígitos Verificadores: ", digitosVerificadores, "\n")
+      escreva("\tCPF Válido!\n ")
+      escreva("Números do CPF: ", numerosCPF,"-",digitosVerificadores,  "\n")
+      //escreva("Dígitos Verificadores: ", digitosVerificadores, "\n")
     } senao {
       escreva("CPF inválido. Deve conter 11 dígitos numéricos.\n")
     }
