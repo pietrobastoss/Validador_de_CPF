@@ -7,7 +7,7 @@ programa {
     caracter c
     inteiro i, soma, peso, resto, pdvCalculado
     inteiro tamanho
-
+    inteiro i, tamanho
     cpfSomenteNumeros = ""
     numerosCPF = ""
     digitosVerificadores = ""
