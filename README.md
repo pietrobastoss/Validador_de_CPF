@@ -87,7 +87,7 @@ Calcular e encontrar o Primeiro Dígito Verificador - PDV.
     - [x] O resultado da comparação do PDV encontrado com o PDV do CPF digitado;
 - [x] A atualização do código tem que ser feito por um integrante que ainda não realizou um [`Pull Request`](https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork);
 
-Etapa 8: Dígito 2
+## Etapa 8: Dígito 2
 
 ### Objetivos
 Calcular e encontrar o Segundo Dígito Verificador - SDV.
