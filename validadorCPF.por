@@ -1,111 +1,78 @@
-programa {
-  inclua biblioteca Texto
-  inclua biblioteca Tipos
+def inicio():
+    cpf_entrada = input("Digite o CPF (formato XXX.XXX.XXX-YY ou XXXXXXXXXYY): ")
+    cpf_somente_numeros = ""
+    numeros_cpf = ""
+    digitos_verificadores = ""
 
-  funcao inicio() {
-    cadeia cpfEntrada, cpfSomenteNumeros, numerosCPF, digitosVerificadores
-    caracter c
-    inteiro i, soma, peso, resto, pdv1, pdv2
-    inteiro tamanho
-    inteiro numerosParaSDV[10]
+    tamanho = len(cpf_entrada)
 
-    cpfSomenteNumeros = ""
-    numerosCPF = ""
-    digitosVerificadores = ""
+    if not ((tamanho == 14 and cpf_entrada[3] == "." and cpf_entrada[7] == "." and cpf_entrada[11] == "-") or (tamanho == 11)):
+        print("Formato inválido. Encerrando o programa.\n")
+        return
 
-    escreva("Digite o CPF (formato XXX.XXX.XXX-YY ou XXXXXXXXXYY): ")
-    leia(cpfEntrada)
+    for i in range(tamanho):
+        c = cpf_entrada[i]
+        if "0" <= c <= "9":
+            cpf_somente_numeros += c
 
-    tamanho = Texto.numero_caracteres(cpfEntrada)
+    if len(cpf_somente_numeros) != 11:
+        print("CPF inválido. Deve conter 11 dígitos numéricos.\n")
+        return
 
-    se (
-      nao (
-        (tamanho == 14 e Texto.obter_caracter(cpfEntrada, 3) == "." e Texto.obter_caracter(cpfEntrada, 7) == "." e Texto.obter_caracter(cpfEntrada, 11) == "-")
-        ou
-        (tamanho == 11)
-      )
-    ) {
-      escreva("Formato inválido. Encerrando o programa.\n")
-      retorne
-    }
+    for i in range(9):
+        numeros_cpf += cpf_somente_numeros[i]
 
-    para(i = 0; i < tamanho; i = i + 1) {
-      c = Texto.obter_caracter(cpfEntrada, i)
-      se (c >= "0" e c <= "9") {
-        cpfSomenteNumeros = cpfSomenteNumeros + c
-      }
-    }
-
-    se (Texto.numero_caracteres(cpfSomenteNumeros) != 11) {
-      escreva("CPF inválido. Deve conter 11 dígitos numéricos.\n")
-      retorne
-    }
-
-    para(i = 0; i < 9; i = i + 1) {
-      numerosCPF = numerosCPF + Texto.obter_caracter(cpfSomenteNumeros, i)
-    }
-
-    digitosVerificadores = Texto.obter_caracter(cpfSomenteNumeros, 9) + Texto.obter_caracter(cpfSomenteNumeros, 10)
+    digitos_verificadores = cpf_somente_numeros[9] + cpf_somente_numeros[10]
 
     soma = 0
     peso = 10
-    para(i = 0; i < 9; i = i + 1) {
-      soma = soma + Tipos.caracter_para_inteiro(Texto.obter_caracter(numerosCPF, i)) * peso
-      peso = peso - 1
-    }
+    for i in range(9):
+        soma += int(numeros_cpf[i]) * peso
+        peso -= 1
 
     resto = soma % 11
-    se (resto < 2) {
-      pdv1 = 0
-    } senao {
-      pdv1 = 11 - resto
-    }
+    if resto < 2:
+        pdv1 = 0
+    else:
+        pdv1 = 11 - resto
 
-    escreva("\nCPF digitado: ", cpfSomenteNumeros)
-    escreva("\nPrimeiro Dígito Verificador calculado: ", pdv1)
-    escreva("\nPrimeiro Dígito Verificador digitado: ", Texto.obter_caracter(digitosVerificadores, 0))
+    print("\nCPF digitado:", cpf_somente_numeros)
+    print("Primeiro Dígito Verificador calculado:", pdv1)
+    print("Primeiro Dígito Verificador digitado:", digitos_verificadores[0])
 
-    se (pdv1 == Tipos.caracter_para_inteiro(Texto.obter_caracter(digitosVerificadores, 0))) {
-      escreva("\nResultado: O PDV está CORRETO.\n")
-    } senao {
-      escreva("\nResultado: O PDV está INCORRETO.\n")
-    }
+    if pdv1 == int(digitos_verificadores[0]):
+        print("Resultado: O PDV está CORRETO.\n")
+    else:
+        print("Resultado: O PDV está INCORRETO.\n")
 
-    para(i = 0; i < 9; i = i + 1) {
-      numerosParaSDV[i] = Tipos.caracter_para_inteiro(Texto.obter_caracter(numerosCPF, i))
-    }
-    numerosParaSDV[9] = pdv1
+    numeros_para_sdv = [int(numeros_cpf[i]) for i in range(9)]
+    numeros_para_sdv.append(pdv1)
 
     soma = 0
     peso = 11
-    para(i = 0; i < 10; i = i + 1) {
-      soma = soma + numerosParaSDV[i] * peso
-      peso = peso - 1
-    }
+    for i in range(10):
+        soma += numeros_para_sdv[i] * peso
+        peso -= 1
 
     resto = soma % 11
-    se (resto < 2) {
-      pdv2 = 0
-    } senao {
-      pdv2 = 11 - resto
-    }
+    if resto < 2:
+        pdv2 = 0
+    else:
+        pdv2 = 11 - resto
 
-    escreva("\nSegundo Dígito Verificador calculado: ", pdv2)
-    escreva("\nSegundo Dígito Verificador digitado: ", Texto.obter_caracter(digitosVerificadores, 1))
+    print("Segundo Dígito Verificador calculado:", pdv2)
+    print("Segundo Dígito Verificador digitado:", digitos_verificadores[1])
 
-    se (pdv2 == Tipos.caracter_para_inteiro(Texto.obter_caracter(digitosVerificadores, 1))) {
-      escreva("\nResultado: O SDV está CORRETO.\n")
-    } senao {
-      escreva("\nResultado: O SDV está INCORRETO.\n")
-    }
+    if pdv2 == int(digitos_verificadores[1]):
+        print("Resultado: O SDV está CORRETO.\n")
+    else:
+        print("Resultado: O SDV está INCORRETO.\n")
 
-    se (
-      pdv1 == Tipos.caracter_para_inteiro(Texto.obter_caracter(digitosVerificadores, 0)) e
-      pdv2 == Tipos.caracter_para_inteiro(Texto.obter_caracter(digitosVerificadores, 1))
-    ) {
-      escreva("\n CPF VÁLIDO.\n")
-    } senao {
-      escreva("\n CPF INVÁLIDO.\n")
-    }
-  }
-}
+    if pdv1 == int(digitos_verificadores[0]) and pdv2 == int(digitos_verificadores[1]):
+        print("CPF VÁLIDO.\n")
+    else:
+        print("CPF INVÁLIDO.\n")
+
+
+
+inicio()
